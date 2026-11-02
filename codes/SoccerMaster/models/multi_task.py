@@ -220,7 +220,7 @@ class MultiTaskingModel(nn.Module):
         """
         backbone_ckpt_path = os.path.join(checkpoint_dir, "backbone.pt")
         if os.path.exists(backbone_ckpt_path):
-            backbone_state_dict = torch.load(backbone_ckpt_path, map_location="cpu")
+            backbone_state_dict = torch.load(backbone_ckpt_path, map_location="cpu", weights_only=True)
             
             backbone_state_dict = self._interpolate_pos_embed_if_needed(backbone_state_dict, logger)
             
